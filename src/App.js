@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Particles from "react-particles-js";
 import Navigation from "./components/Navigation/Navigation";
+import Signin from "./components/Signin/Signin";
 import Logo from "./components/Logo/Logo";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Rank from "./components/Rank/Rank";
@@ -31,14 +32,6 @@ class App extends Component {
 			imageUrl: "",
 			box: {},
 			route: "signin",
-			isSignedIn: false,
-			user: {
-				id: "",
-				name: "",
-				email: "",
-				entries: 0,
-				joined: "",
-			},
 		};
 	}
 
@@ -58,15 +51,32 @@ class App extends Component {
 		this.setState({ input: event.target.value });
 	};
 
+	onButtonSubmit = () => {
+		console.log("click");
+	};
+
+	onRouteChange = (route) => {
+		this.setState({ route: route });
+	};
+
 	render() {
 		const { isSignedIn, imageUrl, route, box } = this.state;
 		return (
 			<div className="App">
 				<Particles className="particles" params={particlesOptions} />
-				<Navigation />
-				<Logo />
-				<Rank />
-				<ImageLinkForm />
+				<Navigation onRouteChange={this.onRouteChange} />
+				{this.state.route === "signin" ? (
+					<Signin onRouteChange={this.onRouteChange} />
+				) : (
+					<div>
+						<Logo />
+						<Rank />
+						<ImageLinkForm
+							onInputChange={this.onInputChange}
+							onButtonSubmit={this.onButtonSubmit}
+						/>
+					</div>
+				)}
 			</div>
 		);
 	}
