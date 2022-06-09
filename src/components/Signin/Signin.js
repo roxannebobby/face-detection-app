@@ -1,8 +1,8 @@
 import React from "react";
 
 class Signin extends React.Component {
-	constructor({ email, password }) {
-		super({ email, password });
+	constructor(props) {
+		super(props);
 		this.state = {
 			signInEmail: "",
 			signInPassword: "",
@@ -14,6 +14,11 @@ class Signin extends React.Component {
 
 	onPasswordChange = (event) => {
 		this.setState({ signInPassword: event.target.value });
+	};
+
+	onSubmitSignin = () => {
+		console.log(this.state);
+		this.props.onRouteChange("home");
 	};
 
 	render() {
@@ -52,7 +57,7 @@ class Signin extends React.Component {
 								className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
 								type="submit"
 								value="Sign in"
-								onClick={() => onRouteChange("home")}
+								onClick={this.onSubmitSignin}
 							/>
 						</div>
 						<div className="lh-copy mt3">
