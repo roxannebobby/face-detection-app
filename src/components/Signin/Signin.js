@@ -34,6 +34,7 @@ class Signin extends React.Component {
 									Email
 								</label>
 								<input
+									onChange={this.onEmailChange}
 									className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
 									type="email"
 									name="email-address"
@@ -45,6 +46,7 @@ class Signin extends React.Component {
 									Password
 								</label>
 								<input
+									onChange={this.onPasswordChange}
 									className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
 									type="password"
 									name="password"
