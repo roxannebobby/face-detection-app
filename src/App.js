@@ -37,6 +37,13 @@ class App extends Component {
 		};
 	}
 
+	// check server connection
+	// componentDidMount() {
+	// 	fetch("http://localhost:9000/")
+	// 		.then((response) => response.json())
+	// 		.then(console.log);
+	// }
+
 	loadUser = (data) => {
 		this.setState({
 			user: {
