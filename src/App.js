@@ -34,6 +34,13 @@ class App extends Component {
 			box: {},
 			route: "signin",
 			isSignedIn: false,
+			user: {
+				id: "",
+				name: "",
+				email: "",
+				entries: 0,
+				joined: "",
+			},
 		};
 	}
 
@@ -66,7 +73,7 @@ class App extends Component {
 
 	onRouteChange = (route) => {
 		if (route === "signout") {
-			this.setState({ isSignedIn: false, route: "signin" });
+			this.setState({ isSignedIn: false });
 		} else if (route === "home") {
 			this.setState({ isSignedIn: true });
 		}
@@ -94,7 +101,10 @@ class App extends Component {
 				) : route === "signin" ? (
 					<Signin onRouteChange={this.onRouteChange} />
 				) : (
-					<Register onRouteChange={this.onRouteChange} />
+					<Register
+						loadUser={this.loadUser}
+						onRouteChange={this.onRouteChange}
+					/>
 				)}
 			</div>
 		);
